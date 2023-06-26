@@ -1,0 +1,22 @@
+/** @format */
+.create-task {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.create-task form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-task form input,
+.create-task form textarea,
+.create-task select {
+  width: 100%;
+}
+
+::placeholder {
+  color: #9c9c9c;
+}
