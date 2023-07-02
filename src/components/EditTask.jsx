@@ -16,10 +16,8 @@ const EditTask = ({ baseURL }) => {
     const getData = async (url) => {
       let res = await fetch(url);
       let jsonData = await res.json();
-      console.log(jsonData.task);
       setTask(jsonData.task);
       if (jsonData.task.tag === "important") {
-        console.log("kkk");
         setOptions(["important", "urgent"]);
       } else {
         setOptions(["urgent", "important"]);

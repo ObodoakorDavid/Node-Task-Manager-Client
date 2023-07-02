@@ -5,19 +5,22 @@ import "../styles/Tasks.css";
 import editIcon from "../images/edit-icon.png";
 import deleteIcon from "../images/bin-img.png";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "../utils/Loading";
 
 const AllTasks = ({ baseURL }) => {
   const [tasks, setTasks] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async (url) => {
+      setLoading(true);
       let res = await fetch(url);
       let jsonData = await res.json();
-      console.log(jsonData.tasks);
       setTasks(jsonData.tasks);
+      setLoading(false);
     };
-    getData(`${baseURL}/api/task/`);
+    getData(`${baseURL}/api/task`);
   }, [baseURL]);
 
   const deleteData = (id) => {
@@ -38,6 +41,7 @@ const AllTasks = ({ baseURL }) => {
           + Add New Task
         </Link>
       </div>
+      {loading && <Loading />}
       {tasks &&
         tasks.map((task) => {
           return (
@@ -81,7 +85,7 @@ const AllTasks = ({ baseURL }) => {
               </div>
               <hr style={{ margin: "8px" }} />
               <div className="p-3">
-                <p className="fw-bold fs-5 text-sm-start">{task.task}</p>
+                <p className="fw-bold fs-5 text-sm-start">{task.title}</p>
                 <p className="text-sm-start">{task.description}</p>
               </div>
             </div>

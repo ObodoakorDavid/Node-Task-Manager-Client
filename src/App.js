@@ -10,7 +10,7 @@ import EditTask from "./components/EditTask";
 import Navbarr from "./components/Navbarr";
 
 function App() {
-  const baseURL = `http://localhost:3002`;
+  const baseURL = `https://taskmanagerserver1.onrender.com`;
 
   return (
     <div className="App">
